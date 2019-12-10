@@ -1,0 +1,40 @@
+{
+  "name": "Roler",
+  "version": "0.0.1",
+  "description": "Un bot para uso de Rol programado en JS y usando paquetes de node.js",
+  "main": "Roler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Roler.js"
+  },
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "express": "^4.16.4",
+    "ffmepg": "^1.0.2",
+    "ffmpeg": "0.0.4",
+    "node-opus": "^0.3.2",
+    "opus-encode": "^2.0.2",
+    "opusscript": "0.0.7",
+    "ytdl": "^0.13.1",
+    "ytdl-core": "^1.0.0",
+    "ytdl-core-discord": "^1.0.3",
+    "google": "^2.1.0",
+    "google-translate-api": "^2.3.0",
+    "search-for": "^1.0.1",
+    "marsnpm": "^0.3.7",
+    "mega-dtbs": "^0.1.17",
+    "megadb": "^3.0.0"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "repository": {
+    "url": "https://github.com/BloxOfficial/roler"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
