@@ -1,7 +1,7 @@
 {
   "name": "Roler",
   "version": "0.0.1",
-  "description": "Un bot para uso de Rol programado en JS y usando paquetes de node.js",
+  "description": "Un bot multifuncional incluyendo uso en juegos de Rol programado en JS y usando paquetes de node.js",
   "main": "Roler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,9 +12,6 @@
     "express": "^4.16.4",
     "ffmepg": "^1.0.2",
     "ffmpeg": "0.0.4",
-    "node-opus": "^0.3.2",
-    "opus-encode": "^2.0.2",
-    "opusscript": "0.0.7",
     "ytdl": "^0.13.1",
     "ytdl-core": "^1.0.0",
     "ytdl-core-discord": "^1.0.3",
