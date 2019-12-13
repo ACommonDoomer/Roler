@@ -6,7 +6,7 @@ const db = require("megadb");
 console.log("Esta es una version alpha <3, Disfruta la nueva Alpha 1.0.2");
 let warn_db = new db.crearDB("warns", "moderacion");
 let logs_db = new db.crearDB("logs", "moderacion");
-let prefix = 'rb!';
+let prefix = 'rl!';
 
 var queue = new Map();
 
