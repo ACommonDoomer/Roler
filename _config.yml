@@ -2,3 +2,6 @@ theme: jekyll-theme-cayman
 title: [Roler]
 description: [Un bot multifuncional incluyendo uso en juegos de Rol programado en JS y usando paquetes de node.js
 - Blox, Gatolandia]
+github:
+  zip_url: https://github.com/BloxOfficial/Roler/download.zip
+  another_url: https://discord.gg/X6CjE5v
