@@ -3,3 +3,5 @@ Programadores: Blox, Gatolandia. Un bot multifuncional incluyendo uso en juegos 
 
 Invitalo!:
 https://discordapp.com/oauth2/authorize?client_id=654089433473089552&scope=bot&permissions=1207434689
+
+Licencia: GNU General Public License v3.0
