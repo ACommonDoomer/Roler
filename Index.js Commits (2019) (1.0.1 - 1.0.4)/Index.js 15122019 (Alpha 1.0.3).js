@@ -2,23 +2,22 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const ytdl = require("ytdl-core");
+console.log("Esta es una version alpha <3, Disfruta la nueva Alpha 1.0.3");
 const db = require("megadb");
 const config = require("./config.json");
-console.log("Esta es una version alpha <3, Disfruta la nueva Alpha 1.0.5");
-let recuerdos_db = new db.crearDB("recuerdos", "Contenido")
+let gifs_db = new db.crearDB("ContenidoComandos", "Gifs");
 let warn_db = new db.crearDB("warns", "moderacion");
 let logs_db = new db.crearDB("logs", "moderacion");
 let prefix = config.prefix;
 
 var queue = new Map();
-var recuerdos = new Map();
 
 client.on("ready", () => {
-  console.log("Roler está listo para ser usado");
+  console.log("Rolerbeta está listo para ser usado");
   client.user.setPresence({
     status: "online",
     game: {
-      name: "rl!help, Alpha 1.0.5",
+      name: "rl!help, Alpha 1.0.3",
       type: "WATCHING"
     }
   });
@@ -136,27 +135,21 @@ client.on("message", async msg => {
   if (cmd == "roll") {
     let sh = 100;
     let latencia = Math.floor(Math.random() * (sh - 1 + 1)) + 1;
-    function roll() {
     const embed = new Discord.RichEmbed()
       .setAuthor(`Dados tirados por ${msg.author.username}...`)
       .setTitle("Los dados cayeron en...")
       .setColor("#B3B3B3")
       .addField("Los dados cayeron en...", + latencia);
-      msg.channel.send(embed);
+    msg.channel.send(embed);
   }
-      msg.channel.send('Mezclando...');
-      
-      setTimeout(roll, 2000);
-} 
   
   if (cmd === "help") {
     const embed = new Discord.RichEmbed()
-    .setTitle(`Felices fiestas navideñas!, Esta es la informacion y los comandos disponibles de Roler`) 
+    .setTitle(`Esta es la informacion y los comandos disponibles de Roler`) 
     .setColor("#B3B3B3")
     .setThumbnail("https://cdn.discordapp.com/attachments/474331584447643658/654103434567352321/juegos-de-rol-655x368_1.jpg")
     .addField("Versión actual del bot:", "Alpha 1.0.3")
     .addField("Repositorio:", "https://github.com/BloxOfficial/roler")
-    .addField("Página web oficial:", "https://rolerdev.glitch.me")
     .addField("Old Update", "Alpha 1.0.1")
     .addField('rl!play', 'Reproduce una URL de YouTube')
     .addField('rl!stop', 'Detiene la reproducción y sale del canal de voz')
@@ -183,32 +176,18 @@ client.on("message", async msg => {
   
   if (cmd === "help2") {
     const embed = new Discord.RichEmbed()
-    .setTitle(`Felices fiestas navideñas!, Esta es la informacion y los comandos disponibles de Roler (Página 2)`)
+    .setTitle(`Esta es la informacion y los comandos disponibles de Roler (Página 2)`)
     .setColor("#B3B3B3")
     .setThumbnail("https://cdn.discordapp.com/attachments/474331584447643658/654103434567352321/juegos-de-rol-655x368_1.jpg")
-    .addField("Versión actual del bot:", "Alpha 1.0.4")
+    .addField("Versión actual del bot:", "Alpha 1.0.3")
     .addField("Repositorio:", "https://github.com/BloxOfficial/roler")
-    .addField("Old Update", "Alpha 1.0.3")
+    .addField("New Update", "Alpha 1.0.3")
     .addField("rl!searchdz + [Busqueda]", "Se hará una busqueda en Deezer sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
     .addField("rl!searchsp + [Busqueda]", "Se hará una busqueda en Spotify sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
     .addField("rl!searchgh + [Busqueda]", "Se hará una busqueda en GitHub sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
     .addField("rl!searchvm + [Busqueda]", "Se hará una busqueda en Vimeo sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
     .addField("rl!searchst + [Busqueda]", "Se hará una busqueda en Steam sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
     .addField("rl!searchup + [Busqueda]", "Se hará una busqueda en Uptodown sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
-    .addField("Old Christmas Update", "Alpha 1.0.4")
-    .addField("rl!searchab + [Busqueda]", "Se hará una busqueda en Animeblix sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
-    .addField("rl!searchddg + [Busqueda]", "(Se recomienda usar DuckDuckGo al realizar busquedas para mayor privacidad) Se hará una busqueda en DuckDuckGo sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
-    .addField("rl!searchsf + [Busqueda]", "Se hará una busqueda en Sourceforge sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
-    .addField("rl!searchtw + [Busqueda]", "Se hará una busqueda en Twitch sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
-    .addField("rl!bonfire", "Se mostrará un bonito Gif de una fogata para que te sientas calientito :3")
-    .addField("rl!recetasnav", "Se mostrará un pequeño recetario navideño en un embed")
-    .addField("New Update", "Alpha 1.0.5")
-    .addField("rl!searchtwt + [Busqueda]", "Se hará una busqueda en Twitter sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")
-    .addField("rl!searcham + [Busqueda]", "Se hará una busqueda en Amazon sobre lo que haya ingresado despues del comando, Roler pondra el enlace en el embed")   
-    .addField("rl!aboutkrakendev", "Información acerca de Kraken Development")
-    .addField("rl!clear + [Cantidad]", "Se borra la cantidad de mensajes puestos despues del comando")
-    .addField("rl!triggered", "Un gif de un perro modo Triggered")
-    .addField("rl!browsersinfo", "Te muestra información completa sobre los 4 navegadores más usados (Chrome, Firefox, Opera, Safari)")
     .setFooter("Page 2 of 2")
     msg.channel.send(embed);
     }
@@ -694,7 +673,7 @@ let arg = parseInt(args.join(" "));
     }
 }
   
-  //Old Update (Alpha 1.0.3)
+  //New Update (Alpha 1.0.3)
   
   //NUEVOS COMANDOS BUSQUEDA
   
@@ -780,210 +759,6 @@ let arg = parseInt(args.join(" "));
     .setTitle('(En uptodownWindows) Buscaste ' + searchQTitleUP)
     .addField("https://en.uptodown.com/" + searchUPE, "Cliquea la página para ver su contenido")
     .setColor("#B3B3B3");
-    msg.channel.send(embed);
-  }
-  
-  //Old Christmas update (Alpha 1.0.4)
-  
-    
-  if(cmd === "searchab") {
-    let searchQTitleAB = args.join(" ")
-    let searchABQ = args.join("+");
-    let searchABE = ('animes?nombre=' + searchABQ);
-    if(!searchABQ) return msg.channel.send('Que querías buscar?');
-    const embed = new Discord.RichEmbed()
-    .setThumbnail("https://cdn.discordapp.com/attachments/654106991626813453/655966809563856906/ab.png")
-    .setDescription(`Busqueda realizada por **${msg.author.username}**`)
-    .setTitle('(En AnimeBlix) Buscaste ' + searchQTitleAB)
-    .addField("https://animeblix.com/" + searchABE, "Cliquea la página para ver su contenido")
-    .setColor("#B3B3B3");
-    msg.channel.send(embed);
-  }
-      
-  if(cmd === "searchddg") {
-    let searchQTitleDDG = args.join(" ")
-    let searchDDGQ = args.join("+");
-    let searchDDGE = ('?q=' + searchDDGQ + "&atb=v199-6__&ia=web");
-    if(!searchDDGQ) return msg.channel.send('Que querías buscar?');
-    const embed = new Discord.RichEmbed()
-    .setThumbnail("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-W3IWzydE5wY%2FVMUaVJl5HmI%2FAAAAAAAAAUk%2FNUMHrn-VJIs%2Fs1600%2FDuckDuckGo%252BLogo.png&f=1&nofb=1")
-    .setDescription(`Busqueda realizada por **${msg.author.username}**`)
-    .setTitle('(En DuckDuckGo) Buscaste ' + searchQTitleDDG)
-    .addField("https://duckduckgo.com/" + searchDDGE, "Cliquea la página para ver su contenido")
-    .setFooter("Para mayor privacidad al navegar te recomendamos usar DuckDuckGo como motor de busqueda...", "https://duckduckgo.com/")
-    .setColor("#B3B3B3");
-    msg.channel.send(embed);
-  }
-  
-    if(cmd === "searchsf") {
-    let searchQTitleSF = args.join(" ")
-    let searchSFQ = args.join("+");
-    let searchSFE = ('?q=' + searchSFQ);
-    if(!searchSFQ) return msg.channel.send('Que querías buscar?');
-    const embed = new Discord.RichEmbed()
-    .setThumbnail("https://a.fsdn.com/con/img/sandiego/logo-180x180.png")
-    .setDescription(`Busqueda realizada por **${msg.author.username}**`)
-    .setTitle('(En Sourceforge) Buscaste ' + searchQTitleSF)
-    .addField("https://sourceforge.net/directory/os:windows/" + searchSFE, "Cliquea la página para ver su contenido")
-    .setColor("#B3B3B3");
-    msg.channel.send(embed);
-  }
-  
-    if(cmd === "searchtw") {
-    let searchQTitleTW = args.join(" ")
-    let searchTWQ = args.join("+");
-    let searchTWE = ('search?term=' + searchTWQ);
-    if(!searchTWQ) return msg.channel.send('Que querías buscar?');
-    const embed = new Discord.RichEmbed()
-    .setThumbnail("http://pngimg.com/uploads/twitch/twitch_PNG37.png")
-    .setDescription(`Busqueda realizada por **${msg.author.username}**`)
-    .setTitle('(En Twitch) Buscaste ' + searchQTitleTW)
-    .addField("https://www.twitch.tv/" + searchTWE, "Cliquea la página para ver su contenido")
-    .setColor("#B3B3B3");
-    msg.channel.send(embed);
-  }
- 
-      if(cmd == "bonfire") {
-      let img = 1;
-        var random = Math.floor(Math.random() * (img - 1 + 1)) + 1;
-        const embed = new Discord.RichEmbed()
-        switch(random) {
-          case 1: embed.setImage("http://4.bp.blogspot.com/-jaAUkGrCcVY/U6x0EyTPovI/AAAAAAADBZs/TqXn7-QLAl4/s1600/_DSC9577+%2528Copiar%2529-MOTION.gif"); break;
-        }
-        embed.setTitle('Una fogata para calentarte :heart: :fire:')
-        embed.setColor("#B3B3B3")
-        embed.setDescription(`Una fogata para calentarte en estas fiestas navideñas <3`)
-        msg.channel.send(embed);
-    }
-  
-  if (cmd === "recetasnav") {
-    const embed = new Discord.RichEmbed()
-    .setTitle('Unas recetas navideñas para que disfrutes estas fiestas cocinando y comiendo :3')
-    .setColor("#FF3C3C")
-    .setDescription('Para ver la receta pon rl!rn + nombre (sin espacios y en minusculas), Ejemplo: rl!rnponchedefrutas')
-    .setThumbnail("https://images.vexels.com/media/users/3/133024/isolated/preview/05384b21cf85761ee636949d6db7c78e-christmas-ball-cartoon-icon-137-by-vexels.png")
-    .addField("Fuente:", "https://www.kiwilimon.com/temporada/navidad/posadas")
-    .addField("Bebidas/Semiliquidos: ", "Ponche de frutas, Nieve de ponche")
-    .addField("Postres: ", "Tamales caseros")
-    .setFooter("Página 1 de 1");
-    msg.channel.send(embed);
-  }
-  
-  if (cmd === "rnponchedefrutas") {
-    const embed = new Discord.RichEmbed()
-    .setTitle('Aprende a hacer ponche de frutas! :D')
-    .setColor("#FF3C3C")
-    .setThumbnail("https://images.vexels.com/media/users/3/133024/isolated/preview/05384b21cf85761ee636949d6db7c78e-christmas-ball-cartoon-icon-137-by-vexels.png")
-    .addField("Fuente:", "https://www.kiwilimon.com/temporada/navidad/posadas")
-    .addField("Ingredientes:", "1/4 de kilo de flor de jamaica, 1 raja de canela desmenuzada, 1 kilo de azúcar al gusto, 1/4 de kilo de tejocote, 1/4 de kilo de tamarindo, 1/2 kilo de guayaba en cubitos, 1/2 kilo de manzana en cubitos, 1/4 de kilo de pasa, 1/4 de kilo de ciruela, 1 bolsita de caña pelada y cortada en tiras chicas")
-    .addField("Preparación:", "Cuece juntas la jamaica y la canela en agua suficiente, durante 30 minutos. Cuando la jamaica esté casi lista, pon la mitad del azúcar en una olla con capacidad para 30 litros y prende el fuego para que se derrita y se haga caramelo. Vierte dentro de la misma olla el líquido de cocción de la jamaica, colado. Desecha la flor y la canela. Cuece aparte los tejocotes con un poco de agua. Retira del fuego en cuanto den un hervor. Permite que se enfríen y pélalos. Luego, pártelos a la mitad, retira el corazón y rebana las mitades en lunas. Vierte el agua de cocimiento de los tejocotes a la olla grande, así como los tejocotes rebanados. Cuece el tamarindo en otra olla con agua. Exprime y cuela la pulpa en la olla del ponche. Luego, agrega la guayaba, manzana, pasitas, ciruelas pasas y caña. Agrega tanta agua como sea necesario y el resto del azúcar, o al gusto. Deja que el ponche hierva durante por los menos 1 hora.")
-    .setFooter("Página 1 de 1");
-    msg.channel.send(embed);
-  }
-  
-  if (cmd === "rnnievedeponche") {
-    const embed = new Discord.RichEmbed()
-    .setTitle('Aprende a hacer nieve de ponche! :D')
-    .setColor("#FF3C3C")
-    .setThumbnail("https://images.vexels.com/media/users/3/133024/isolated/preview/05384b21cf85761ee636949d6db7c78e-christmas-ball-cartoon-icon-137-by-vexels.png")
-    .addField("Fuente:", "https://www.kiwilimon.com/temporada/navidad/posadas/helado/nieve-de-ponche")
-    .addField("Ingredientes:", "1 paquete de Bolsas Storeit® para Congelar Mediana, 1 litro de ponche de frutas")
-    .addField("Preparación:", "Etiqueta tus bolsas para congelar Storeit® mediana. Cuela el ponche de frutas y reserva solo el líquido. Introduce el líquido en la bolsa para congelar Storeit® mediana. Congela por 2 horas o hasta que se solidifique. Retíralo de la bolsa y muélelo en la licuadora. Sirve.")
-    .setFooter("Página 1 de 1");
-    msg.channel.send(embed);
-  }
-  
-  
-   if (cmd === "rntamalescaseros") {
-    const embed = new Discord.RichEmbed()
-    .setTitle('Aprende a hacer tamales caseros! :D')
-    .setColor("#FF3C3C")
-    .setThumbnail("https://images.vexels.com/media/users/3/133024/isolated/preview/05384b21cf85761ee636949d6db7c78e-christmas-ball-cartoon-icon-137-by-vexels.png")
-    .addField("Fuente:", "https://www.kiwilimon.com/temporada/navidad/posadas")
-    .addField("Ingredientes:", "250 gramos de manteca de cerdo (para la masa), 500 gramos de harina para tamales (para la masa), 1 taza de caldo de pollo (para la masa), 1 cucharadita de polvo para hornear (para la masa), 1 cucharadita de sal (para la masa), 1 cucharadita de pimienta (para la masa), 1 litro de agua, 500 gramos de tomate verde, 5 chiles serranos, 1 diente de ajo sin cáscara, 1/4 de cebolla, 3 cucharadas de aceite, 2 pizcas de sal fina, 1 pizca de pimienta negra molida, 1 pechuga de pollo sin hueso cocida y desmenuzada. 10 hojas de maíz para tamal remojadas en agua.")
-    .setFooter("Página 1 de 1");
-    msg.channel.send(embed);
-  }
-  
-  //New Update (Alpha 1.0.5)
-  
- if(cmd == "triggered") {
-    let respuestas = 2;
-    let randomR = Math.floor(Math.random() * (respuestas + 1 -1)) + 1;
-    const embed = new Discord.RichEmbed()
-    .setTitle(`${msg.author.username} estalló, huyan :exploding_head:!`)
-    switch(randomR) {
-        case 1: embed.setImage("https://i.imgur.com/8zeH0rs.gif"); break;
-      }
-        embed.setColor("#B3B3B3")
-        msg.channel.send(embed);
-    };
-  
-    if(cmd == "clear") {
-        if(!msg.member.hasPermission("MANAGE_MESSAGES")) return msg.channel.send("no tienes permisos para usar este comando.")
-        if(!args[0]) return msg.channel.send("Debes ingresar el numero de mensajes a borrar")
-        let number = args[0]
-        if(isNaN(number)) return msg.channel.send("Necesitas poner numeros, no letras ni simbolos")
-        number = parseInt(number)
-        if(number >= 101 || number <= 0) return msg.channel.send("Debes ingresar un valor menor a 100 y mayor a 0")
-        msg.channel.bulkDelete(number + 1 ).then( () => {
-            msg.channel.send(`Roler limpió el chat borrando ${number} mensajes`).then(m => m.delete(5000))
-        }).catch(error => {
-            msg.channel.send(`ocurrio un error ${error.msg}`)
-        })
-    };
-  
-   if (cmd === "aboutkrakendev") {
-    const embed = new Discord.RichEmbed()
-    .setTitle('Está es la información acerca de Kraken Development')
-    .setColor("#B3B3B3")
-    .setThumbnail("https://cdn.discordapp.com/attachments/660959799369793568/665015063471456258/Krakendev.png")
-    .addField("Fundadores:", "Blox, Gatolandia")
-    .addField("Página web oficial:", "https://krakendevelopment.glitch.me/")
-    .addField("Servicio de hosting usado:", "Glitch")
-    .addField("Acerca de Kraken Development:", "Un equipo de desarrollo que mayormente trabaja con código abierto")
-    .addField("Organización en GitHub:", "https://github.com/Kraken-Development")
-    msg.channel.send(embed);
-  }
-  
-  if(cmd === "searchtwt") {
-    let searchQTitleTWT = args.join(" ")
-    let searchTWTQ = args.join("%20");
-    let searchTWTE = ('search?q=' + searchTWTQ + '&src=typed_query');
-    if(!searchTWTQ) return msg.channel.send('Que querías buscar?');
-    const embed = new Discord.RichEmbed()
-    .setThumbnail("http://nightowlcyber.com/wp-content/uploads/2015/03/Twitter-icon-512x512.png")
-    .setDescription(`Busqueda realizada por **${msg.author.username}**`)
-    .setTitle('(En Twitter) Buscaste ' + searchQTitleTWT)
-    .addField("https://twitter.com/" + searchTWTE, "Cliquea la página para ver su contenido")
-    .setColor("#B3B3B3");
-    msg.channel.send(embed);
-  }
-  
-  
-  if(cmd === "searcham") {
-    let searchQTitleAM = args.join(" ")
-    let searchAMQ = args.join("+");
-    let searchAME = ('s?k=' + searchAMQ + '&ref=nb_sb_noss');
-    if(!searchAMQ) return msg.channel.send('Que querías buscar?');
-    const embed = new Discord.RichEmbed()
-    .setThumbnail("https://www.stanleyidesis.com/assets/images/book-modal/amazon-icon.png")
-    .setDescription(`Busqueda realizada por **${msg.author.username}**`)
-    .setTitle('(En Amazon) Buscaste ' + searchQTitleAM)
-    .addField("https://www.amazon.com/" + searchAME, "Cliquea la página para ver su contenido")
-    .setColor("#B3B3B3");
-    msg.channel.send(embed);
-  }
-  
-  if (cmd === "browsersinfo") {
-    const embed = new Discord.RichEmbed()
-    .setTitle('Está es la información acerca de los navegadores web más usados actualmente...')
-    .setColor("#B3B3B3")
-    .setThumbnail("https://cdn.discordapp.com/attachments/654106991626813453/665025710183940119/wi.png")
-    .addField("Chrome:", "Motor de renderizado: Blink, Versión actual: Chrome 79.0.3945.88, Motores de busqueda: Google, DuckDuckGo, Bing, Yahoo, etc..., Descargalo: https://www.google.com.mx/chrome/")
-    .addField("Firefox:", "Motor de renderizado: Gecko, Versión actual: Firefox 72.0, Motores de busqueda: Google, DuckDuckGo, Bing, Yahoo, etc..., Descargalo: https://www.mozilla.org/es-MX/firefox/new/")
-    .addField("Opera:", "Motor de renderizado: Presto, Versión actual: Opera 65, Motores de busqueda: Google, DuckDuckGo, Bing, Yahoo, etc..., Descargalo: https://www.opera.com/es-419")
-    .addField("Safari:", "Motor de renderizado: KHTML, Webkit, Versión actual: Safari 13.0, Motores de busqueda: Google, DuckDuckGo, Bing, Yahoo, etc..., Descargalo: https://www.apple.com/mx/safari/")
     msg.channel.send(embed);
   }
   
