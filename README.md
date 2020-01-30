@@ -1,5 +1,5 @@
 # Roler
-Programadores: Blox, Gatolandia.
+Programador: Blox.
 
 Sobre Roler: Un bot multifuncional incluyendo uso en juegos de Rol programado en JS y usando paquetes de node.js / A multifunctional bot includes use in RPG games programmed in JS and using node.js packages
 
@@ -13,7 +13,7 @@ Licencia: GNU General Public License v3.0
 -----------------------------------------------------------------------------------------
 
 # Roler
-Programmers: Blox, Gatolandia.
+Programmer: Blox.
 
 Aboout Roler: A multifunctional bot including use in RP games programmed in JS and using node.js packages / A multifunctional bot includes use in RPG games programmed in JS and using node.js packages
 
